@@ -8,7 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import top.durandal.common.ResponseInfo;
 import top.durandal.entity.User;
-import top.durandal.service.UserService;
+import top.durandal.api.service.UserService;
 import top.durandal.statictext.StaticText;
 
 import javax.validation.Valid;

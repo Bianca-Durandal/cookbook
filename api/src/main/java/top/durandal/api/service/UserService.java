@@ -1,4 +1,4 @@
-package top.durandal.service;
+package top.durandal.api.service;
 
 import top.durandal.entity.User;
 

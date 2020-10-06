@@ -48,7 +48,7 @@
   } ],
   "pkColumn" : null,
   "otherColumn" : null,
-  "savePackageName" : "top.durandal.dao",
-  "savePath" : "./dao/src/main/java/top/durandal/dao",
-  "saveModelName" : "dao"
+  "savePackageName" : "top.durandal.api",
+  "savePath" : "./api/src/main/java/top/durandal/api",
+  "saveModelName" : "api"
 }

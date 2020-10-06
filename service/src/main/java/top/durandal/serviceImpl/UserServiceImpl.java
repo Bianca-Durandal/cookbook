@@ -6,7 +6,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import top.durandal.dao.UserDao;
 import top.durandal.entity.User;
-import top.durandal.service.UserService;
+import top.durandal.api.service.UserService;
 import java.util.Date;
 
 @Component
