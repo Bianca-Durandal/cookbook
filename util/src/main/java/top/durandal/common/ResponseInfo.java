@@ -5,10 +5,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import top.durandal.http.ResStatus;
 
+import java.io.Serializable;
+
 @Data
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ResponseInfo {
+public class ResponseInfo{
     private Integer code;
     private String msg;
     private Object data;
@@ -27,8 +29,8 @@ public class ResponseInfo {
         return new ResponseInfo(ResStatus.OK,o);
     }
 
-    public static ResponseInfo error(String msg){
-        return error(ResStatus.ERROR.getCode(), msg);
+    public static ResponseInfo error(Object msg){
+        return error(ResStatus.ERROR.getCode(), msg.toString());
     }
 
     public static ResponseInfo error(Integer code,String msg){
