@@ -54,4 +54,17 @@ public interface CommentService {
      */
     boolean deleteById(Integer commentId);
 
+    /**
+     * 查询该作品下的所有评论列表
+     * @param worksId
+     * @return
+     */
+    List<Comment> getCommentByWorksId(int worksId);
+
+    /**
+     * 通过油用户Id获得所有评论
+     * @param userToId
+     * @return
+     */
+    List<Comment> getCommentByUserId(Integer userToId);
 }

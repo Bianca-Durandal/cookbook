@@ -16,7 +16,6 @@ public interface ArticleService {
     /**
      * 通过ID查询单条数据
      *
-     * @param 主键
      * @return 实例对象
      */
     Article queryById();
@@ -49,9 +48,20 @@ public interface ArticleService {
     /**
      * 通过主键删除数据
      *
-     * @param 主键
      * @return 是否成功
      */
     boolean deleteById();
 
+    /**
+     * 通过作品id查询文章内容
+     * @param worksId
+     * @return
+     */
+    List<Article> queryByWorksId(int worksId);
+
+    /**
+     * 将所有步骤列表插入数据库
+     * @param article
+     */
+    void insertAllArticle(List<Article> article);
 }

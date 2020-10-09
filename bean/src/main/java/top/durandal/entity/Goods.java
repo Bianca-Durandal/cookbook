@@ -39,10 +39,10 @@ public class Goods implements Serializable {
     /**
      * 商品价格
      */
-    private Object goodsPrice;
+    private Double goodsPrice;
     /**
      * 商品图片
      */
-    private Object goodsImg;
+    private String goodsImg;
 
 }

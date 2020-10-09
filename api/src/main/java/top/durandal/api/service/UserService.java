@@ -13,4 +13,8 @@ public interface UserService {
     Integer banByName(String userName);
 
     Integer relieveByName(String userName);
+
+    User getUserByName(String userName);
+
+    User getUserById(Integer userId);
 }

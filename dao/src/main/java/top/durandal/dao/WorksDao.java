@@ -1,7 +1,9 @@
 package top.durandal.dao;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 import top.durandal.entity.Works;
 
@@ -23,6 +25,8 @@ public interface WorksDao {
      * @param worksId 主键
      * @return 实例对象
      */
+    @Select("select works_id,user_id,sort_id,works_author,works_time,works_title,works_cover,works_type,works_describe from works" +
+            "where works_id = #{worksId}")
     Works queryById(Integer worksId);
 
     /**
@@ -49,6 +53,8 @@ public interface WorksDao {
      * @param works 实例对象
      * @return 影响行数
      */
+    @Insert("insert into works (work_id,user_id,sort_id,works_time,works_title,works_show,works_type,works_describe) " +
+            "values(#{worksId},#{userId},#{sortId},#{worksTime},#{worksTitle},#{worksShow},#{worksType},#{worksDescribe})")
     int insert(Works works);
 
     /**
@@ -83,4 +89,41 @@ public interface WorksDao {
      */
     int deleteById(Integer worksId);
 
+    /**
+     * 按照时间排序查找最新，按照类型分别查找文章
+     * @return
+     */
+    @Select("select * from works where works_type='图文' order by works_time desc limit 0,4")
+    List<Works> getWorksArticleByTime();
+
+    /**
+     * 按照时间排序查找，按照类型找视频
+     * @return
+     * works_id,user_id,sort_id,works_author,works_time,works_title,works_cover,works_type,works_describe
+     */
+    @Select("select * from works where works_type='视频' order by works_time desc")
+    List<Works> getWorksVideoByTime();
+
+    /**
+     * 通过分类id获得所有此分类的作品
+     * @param sortId
+     * @return
+     */
+    @Select("select * from works where works_type='图文' and sort_id = #{sortId}")
+    List<Works> getWorksBySortId(int sortId);
+
+    /**
+     * 获得所有的视频
+     * @return
+     */
+    @Select("select * from works where works_type='视频'")
+    List<Works> getWorksByType();
+
+    /**
+     * 通过用户id获得该用户所有的作品
+     * @param userId
+     * @return
+     */
+    @Select("select * from works where user_id = #{userId}")
+    List<Works> getWorksByUserId(int userId);
 }

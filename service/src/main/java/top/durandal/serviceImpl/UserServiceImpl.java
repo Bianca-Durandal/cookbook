@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 import top.durandal.dao.UserDao;
 import top.durandal.entity.User;
 import top.durandal.api.service.UserService;
+import top.durandal.util.ReformatDate;
+
 import java.util.Date;
 
 @Component
@@ -24,7 +26,7 @@ public class UserServiceImpl implements UserService {
             String pass=passwordEncoder.encode(user.getUserPass());
             user.setUserPass(pass);
             user.setUserShow("true");
-            user.setUserDate(new Date());
+            user.setUserDate(ReformatDate.getDate());
             userDao.saveUser(user);
             return true;
         }
@@ -69,5 +71,18 @@ public class UserServiceImpl implements UserService {
             return 1;
         }
         return 0;
+    }
+
+    public User getUserByName(String userName) {
+        User user = userDao.queryByName(userName);
+        if(user!=null){
+            return user;
+        }
+        return null;
+    }
+
+    public User getUserById(Integer userId) {
+        User user = userDao.getUserById(userId);
+        return user;
     }
 }

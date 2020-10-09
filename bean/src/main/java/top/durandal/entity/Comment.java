@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * (Comment)实体类
@@ -19,7 +20,7 @@ public class Comment implements Serializable {
     /**
      * 评论ID
      */
-    private Integer commentId;
+    private Integer worksId;
     /**
      * 用户ID
      */
@@ -31,5 +32,9 @@ public class Comment implements Serializable {
     /**
      * 评论日期
      */
-    private Object commentDate;
+    private String commentDate;
+
+    private Integer userFromId;
+
+    private Integer userToId;
 }

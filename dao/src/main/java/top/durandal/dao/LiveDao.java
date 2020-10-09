@@ -2,6 +2,7 @@ package top.durandal.dao;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 import top.durandal.entity.Live;
 
@@ -23,6 +24,7 @@ public interface LiveDao {
      * @param liveId 主键
      * @return 实例对象
      */
+    @Select("select * form live where liveId = #{liveId}")
     Live queryById(String liveId);
 
     /**
@@ -83,4 +85,17 @@ public interface LiveDao {
      */
     int deleteById(String liveId);
 
+    /**
+     * 通过直播间人气获取最高的四个
+     * @return
+     */
+    @Select("select * from live where live_state = 1 order by live_number desc limit 0 , 4 ")
+    List<Live> getLiveByHeat();
+
+    /**
+     * 获得所有的直播间
+     * @return
+     */
+    @Select("select * from live")
+    List<Live> getLive();
 }

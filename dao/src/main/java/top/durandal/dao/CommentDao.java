@@ -1,7 +1,6 @@
 package top.durandal.dao;
 
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 import top.durandal.entity.Comment;
 
@@ -49,6 +48,9 @@ public interface CommentDao {
      * @param comment 实例对象
      * @return 影响行数
      */
+    @Insert("insert into comment (works_id,user_from_id,user_to_id,comment_content,comment_date) " +
+            "values(#{worksId},#{userFromId},#{userToId},#{commentContent},#{commentDate})")
+    @Options(useGeneratedKeys = true,keyProperty = "worksId")
     int insert(Comment comment);
 
     /**
@@ -83,4 +85,18 @@ public interface CommentDao {
      */
     int deleteById(Integer commentId);
 
+    /**
+     * 通过workId查咋所有的评论
+     * @param worksId
+     * @return
+     */
+    @Select("select * from comment where works_id = #{workId}")
+    List<Comment> getCommentByWorksId(int worksId);
+
+    /**
+     * 根据id查找用户收到的所有评论
+     * @param userToId
+     */
+    @Select("select * from comment where user_to_id = #{userToId}")
+    List<Comment> getCommentByUserId(Integer userToId);
 }

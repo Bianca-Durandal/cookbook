@@ -54,4 +54,29 @@ public interface WorksService {
      */
     boolean deleteById(Integer worksId);
 
+    /**
+     * 通过时间排序查找
+     * @return
+     */
+    List getWorksByTime();
+
+    /**
+     * 获取此类中所有的菜
+     * @param sortId
+     * @return
+     */
+    List<Works> getWorksBySortId(int sortId);
+
+    /**
+     * 获得所有视频(不分类)
+     * @return
+     */
+    List<Works> getWorksByType();
+
+    /**
+     * 通过用户id查找所有作品
+     * @param userId
+     * @return
+     */
+    List<Works> getWorksByUserId(int userId);
 }

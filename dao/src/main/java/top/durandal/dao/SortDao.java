@@ -2,6 +2,7 @@ package top.durandal.dao;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 import top.durandal.entity.Sort;
 
@@ -38,10 +39,10 @@ public interface SortDao {
     /**
      * 通过实体作为筛选条件查询
      *
-     * @param sort 实例对象
      * @return 对象列表
      */
-    List<Sort> queryAll(Sort sort);
+    @Select("select * from sort")
+    List<Sort> queryAll();
 
     /**
      * 新增数据

@@ -1,6 +1,5 @@
 package top.durandal.api.service;
 
-
 import top.durandal.entity.Live;
 
 import java.util.List;
@@ -54,4 +53,15 @@ public interface LiveService {
      */
     boolean deleteById(String liveId);
 
+    /**
+     * 通过人气获取前四的直播间信息
+     * @return 这些直播间的信息数据
+     */
+    List<Live> getLiveByHeat();
+
+    /**
+     * 获得所有的直播间
+     * @return
+     */
+    List<Live> getLive();
 }

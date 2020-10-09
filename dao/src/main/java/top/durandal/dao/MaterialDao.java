@@ -2,6 +2,7 @@ package top.durandal.dao;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 import top.durandal.entity.Material;
 
@@ -83,4 +84,11 @@ public interface MaterialDao {
      */
     int deleteById(Integer materialId);
 
+    /**
+     * 通过作品ID获得所有该id下的食材
+     * @param worksId
+     * @return
+     */
+    @Select("select * from material where works_id = #{worksId}")
+    List<Material> getMaterialByWorksId(int worksId);
 }

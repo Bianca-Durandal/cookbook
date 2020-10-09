@@ -27,7 +27,7 @@ public class Article implements Serializable {
     /**
      * 文章图片
      */
-    private Object articleImg;
+    private String articleImg;
     /**
      * 文章内容
      */

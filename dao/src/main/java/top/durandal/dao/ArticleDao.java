@@ -1,7 +1,9 @@
 package top.durandal.dao;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 import top.durandal.entity.Article;
 
@@ -20,7 +22,6 @@ public interface ArticleDao {
     /**
      * 通过ID查询单条数据
      *
-     * @param 主键
      * @return 实例对象
      */
     Article queryById();
@@ -49,6 +50,7 @@ public interface ArticleDao {
      * @param article 实例对象
      * @return 影响行数
      */
+    @Insert("insert into article (works_id,article_img,article_content) values(#{worksId},#{articleImg},#{articleContent})")
     int insert(Article article);
 
     /**
@@ -78,9 +80,15 @@ public interface ArticleDao {
     /**
      * 通过主键删除数据
      *
-     * @param 主键
      * @return 影响行数
      */
     int deleteById();
 
+    /**
+     * 通过worksId返回该作品所有的步数
+     * @param worksId
+     * @return
+     */
+    @Select("select article_step,article_img,article_content from article where works_id = #{workId}")
+    List<Article> queryByWorksId(int worksId);
 }

@@ -7,11 +7,15 @@ import org.springframework.security.core.Authentication;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import top.durandal.common.ResponseInfo;
+import top.durandal.entity.Live;
 import top.durandal.entity.User;
 import top.durandal.api.service.UserService;
 import top.durandal.statictext.StaticText;
 
+import javax.annotation.Resource;
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -70,5 +74,22 @@ public class UserController {
         return ResponseInfo.error("用户未处于封禁状态");
     }
 
+    @GetMapping("getUserByName")
+    public ResponseInfo getUserByName(String userName){
+        User userByName = userService.getUserByName(userName);
+        if (userByName!=null){
+        return ResponseInfo.success(userByName);
+        }
+        return ResponseInfo.error("用户不存在");
+    }
+
+    @GetMapping("getUserById")
+    public ResponseInfo getUserById(Integer userId){
+        User userById = userService.getUserById(userId);
+        if (userById==null){
+            return ResponseInfo.error("没有找到任何用户");
+        }
+        return ResponseInfo.success(userById);
+    }
 
 }

@@ -1,5 +1,6 @@
 package top.durandal.dao;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -49,7 +50,8 @@ public interface ReceiveGiftDao {
      * @param receiveGift 实例对象
      * @return 影响行数
      */
-    int insert(ReceiveGift receiveGift);
+    @Insert("insert into receive_gift (live_id,user_id,gift_id,gift_name) values(#{liveId},#{userId},#{giftId},#{giftName})")
+    void insert(ReceiveGift receiveGift);
 
     /**
      * 批量新增数据（MyBatis原生foreach方法）

@@ -41,11 +41,22 @@
             <artifactId>curator-recipes</artifactId>
             <version>2.13.0</version>
         </dependency>
-        <!-- redis注册中心 ，不能超过3.0版本否则会报错。-->
+<!--        &lt;!&ndash; redis注册中心 ，不能超过3.0版本否则会报错。&ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>redis.clients</groupId>-->
+<!--            <artifactId>jedis</artifactId>-->
+<!--            <version>2.9.1</version>-->
+<!--        </dependency>-->
         <dependency>
-            <groupId>redis.clients</groupId>
-            <artifactId>jedis</artifactId>
-            <version>2.9.1</version>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>3.4.10</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 

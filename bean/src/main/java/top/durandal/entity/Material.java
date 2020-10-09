@@ -17,10 +17,6 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class Material implements Serializable {
     /**
-     * 原料使用个数ID
-     */
-    private Integer materialId;
-    /**
      * 商品ID
      */
     private Integer goodsId;

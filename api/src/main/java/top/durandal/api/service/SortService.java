@@ -54,4 +54,9 @@ public interface SortService {
      */
     boolean deleteById(Integer sortId);
 
+    /**
+     * 获得所有菜谱分类，
+     * @return
+     */
+    List<Sort> queryAll();
 }

@@ -29,25 +29,17 @@ public class Works implements Serializable {
      */
     private Integer sortId;
     /**
-     * 评论ID
-     */
-    private Integer commentId;
-    /**
      * 作者
      */
     private String worksAuthor;
     /**
      * 发布时间
      */
-    private Object worksTime;
+    private String worksTime;
     /**
      * 作品标题
      */
     private String worksTitle;
-    /**
-     * 作品内容(视频)
-     */
-    private Object worksVideo;
     /**
      * 作品封面
      */
@@ -56,5 +48,9 @@ public class Works implements Serializable {
      * 作品是否能够显示
      */
     private String worksShow;
+
+    private String worksType;
+
+    private String worksDescribe;
 
 }

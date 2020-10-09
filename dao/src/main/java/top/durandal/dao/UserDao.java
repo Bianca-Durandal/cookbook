@@ -24,7 +24,8 @@ public interface UserDao {
     @Select("select user_name,user_pass from user where user_name=#{userName}")
     User findByName(String userName);
 
-    @Select("select user_id,user_name,user_date,user_email,user_phone from user where user_name=#{userName}")
+    @Select("select user_id,user_name,user_date,user_email,user_phone,user_img,user_day,user_sex," +
+            "user_home,user_now,user_self,user_job from user where user_name=#{userName}")
     User queryByName(String userName);
 
     @Update("update user set user_pass = #{userPass} where user_name = #{userName}")
@@ -38,4 +39,12 @@ public interface UserDao {
 
     @Update("update user set user_show = 'true' where user_name = #{userName}")
     void relieveByName(String userName);
+
+    @Select("select user_id,user_name,user_date,user_email,user_phone,user_img,user_day,user_sex," +
+            "user_home,user_now,user_self,user_job from user where user_id=#{userId}")
+    User findUserById(Integer userId);
+
+    @Select("select user_id,user_name,user_date,user_email,user_phone,user_img,user_day,user_sex," +
+            "user_home,user_now,user_self,user_job from user where user_id=#{userId}")
+    User getUserById(Integer userId);
 }

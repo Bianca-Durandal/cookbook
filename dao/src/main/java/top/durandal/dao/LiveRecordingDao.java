@@ -2,6 +2,7 @@ package top.durandal.dao;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 import top.durandal.entity.LiveRecording;
 
@@ -83,4 +84,10 @@ public interface LiveRecordingDao {
      */
     int deleteById(Integer liveRecordingId);
 
+    /**
+     * 获得所有直播间的详细信息
+     * @return
+     */
+    @Select("select * from ")
+    List<LiveRecording> getLive();
 }

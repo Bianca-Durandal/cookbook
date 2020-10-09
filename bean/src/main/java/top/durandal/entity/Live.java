@@ -27,10 +27,14 @@ public class Live implements Serializable {
     /**
      * 直播间封面
      */
-    private Object liveImg;
+    private String liveImg;
     /**
      * 直播间标题
      */
     private String liveTitle;
+
+    private Integer liveState;
+
+    private Integer liveNumber;
 
 }

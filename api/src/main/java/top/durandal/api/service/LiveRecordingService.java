@@ -53,5 +53,4 @@ public interface LiveRecordingService {
      * @return 是否成功
      */
     boolean deleteById(Integer liveRecordingId);
-
 }
