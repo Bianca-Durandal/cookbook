@@ -64,4 +64,6 @@ public interface LiveService {
      * @return
      */
     List<Live> getLive();
+
+    Live insertLive(Live live);
 }

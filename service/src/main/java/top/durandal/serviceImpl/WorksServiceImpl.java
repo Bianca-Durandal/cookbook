@@ -5,10 +5,10 @@ import org.springframework.stereotype.Component;
 import top.durandal.api.service.WorksService;
 import top.durandal.dao.WorksDao;
 import top.durandal.entity.Works;
-import top.durandal.util.ReformatDate;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -31,7 +31,7 @@ public class WorksServiceImpl implements WorksService {
     }
 
     public Works insert(Works works) {
-        works.setWorksTime(ReformatDate.getDate());
+        works.setWorksTime(new Date());
         worksDao.insert(works);
         return works;
     }

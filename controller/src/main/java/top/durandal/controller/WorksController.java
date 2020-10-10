@@ -58,13 +58,13 @@ public class WorksController {
         Works works = worksService.queryById(worksId);
         List<Object> worksList = new ArrayList<Object>();
         worksList.add(works);
-        if (works.getWorksType() == "图文") {
+        if ("图文".equals(works.getWorksType())) {
             Object article = articleController.getArticleByWorksId(worksId).getData();
             Object material = materialController.getMaterialByWorksId(worksId).getData();
             worksList.add(article);
             worksList.add(material);
             return ResponseInfo.success(worksList);
-        } else if (works.getWorksType() == "视频") {
+        } else if ("视频".equals(works.getWorksType())) {
             Object video = videoController.getVideoByWorksId(worksId).getData();
             worksList.add(video);
             return ResponseInfo.success(worksList);

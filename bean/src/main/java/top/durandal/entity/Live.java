@@ -33,7 +33,7 @@ public class Live implements Serializable {
      */
     private String liveTitle;
 
-    private Integer liveState;
+    private String liveState;
 
     private Integer liveNumber;
 

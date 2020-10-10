@@ -1,5 +1,6 @@
 package top.durandal.dao;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -50,6 +51,7 @@ public interface LiveRecordingDao {
      * @param liveRecording 实例对象
      * @return 影响行数
      */
+    @Insert("insert into liveRecording (live_recording_id,live_id,live_time,live_video) values(#{liveRecordingId},#{liveId},#{liveTime},#{liveVideo})")
     int insert(LiveRecording liveRecording);
 
     /**

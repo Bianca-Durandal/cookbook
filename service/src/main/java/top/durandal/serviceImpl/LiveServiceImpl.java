@@ -39,7 +39,7 @@ public class LiveServiceImpl implements LiveService {
 
     public List<Live> getLiveByHeat() {
         List<Live> live = liveDao.getLiveByHeat();
-        if (live.size()!=0){
+        if (live.size() != 0) {
             return live;
         }
         return null;
@@ -47,9 +47,19 @@ public class LiveServiceImpl implements LiveService {
 
     public List<Live> getLive() {
         List<Live> live = liveDao.getLive();
-        if (live.size()!=0){
+        if (live.size() != 0) {
             return live;
         }
         return null;
+    }
+
+    public Live insertLive(Live live) {
+        Live hasLive = liveDao.queryById(live.getLiveId());
+        if (hasLive == null) {
+            liveDao.insertLive(live);
+        }else {
+            liveDao.update(live);
+        }
+        return live;
     }
 }

@@ -27,7 +27,7 @@ public class LiveRecording implements Serializable {
     /**
      * 直播时长
      */
-    private Object liveTime;
+    private String liveTime;
     /**
      * 直播会看(录播)
      */

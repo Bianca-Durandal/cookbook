@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
             String pass=passwordEncoder.encode(user.getUserPass());
             user.setUserPass(pass);
             user.setUserShow("true");
-            user.setUserDate(ReformatDate.getDate());
+            user.setUserDate(new Date());
             userDao.saveUser(user);
             return true;
         }

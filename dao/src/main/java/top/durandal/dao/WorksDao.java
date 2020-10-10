@@ -25,8 +25,7 @@ public interface WorksDao {
      * @param worksId 主键
      * @return 实例对象
      */
-    @Select("select works_id,user_id,sort_id,works_author,works_time,works_title,works_cover,works_type,works_describe from works" +
-            "where works_id = #{worksId}")
+    @Select("select * from works where works_id = #{worksId}")
     Works queryById(Integer worksId);
 
     /**
@@ -101,7 +100,7 @@ public interface WorksDao {
      * @return
      * works_id,user_id,sort_id,works_author,works_time,works_title,works_cover,works_type,works_describe
      */
-    @Select("select * from works where works_type='视频' order by works_time desc")
+    @Select("select * from works where works_type='视频' order by works_time desc limit 0,4")
     List<Works> getWorksVideoByTime();
 
     /**

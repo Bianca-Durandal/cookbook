@@ -27,7 +27,7 @@ public class User implements Serializable {
     private String userPass;
 
     @ApiModelProperty(hidden = true)
-    private String userDate;
+    private Date userDate;
 
     @NotNull
     @Pattern(regexp = "^1[3456789]\\d{9}$")

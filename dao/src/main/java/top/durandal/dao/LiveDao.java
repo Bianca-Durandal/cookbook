@@ -1,8 +1,7 @@
 package top.durandal.dao;
 
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import com.sun.tools.javac.code.Lint;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 import top.durandal.entity.Live;
 
@@ -24,7 +23,7 @@ public interface LiveDao {
      * @param liveId 主键
      * @return 实例对象
      */
-    @Select("select * form live where liveId = #{liveId}")
+    @Select("select * from live where live_id = #{liveId}")
     Live queryById(String liveId);
 
     /**
@@ -75,6 +74,7 @@ public interface LiveDao {
      * @param live 实例对象
      * @return 影响行数
      */
+    @Update("update live set live_img=#{liveImg},live_title=#{liveTitle},live_state=#{liveState},live_number=#{liveNumber} where live_id=#{liveId}")
     int update(Live live);
 
     /**
@@ -98,4 +98,8 @@ public interface LiveDao {
      */
     @Select("select * from live")
     List<Live> getLive();
+
+    @Insert("insert into live (live_id,user_id,live_img,live_title,live_state,live_number) " +
+            "values(#{liveId},#{userId},#{liveImg},#{liveTitle},#{liveState},#{liveNumber})")
+    int insertLive(Live live);
 }

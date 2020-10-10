@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * (Works)实体类
@@ -35,7 +36,7 @@ public class Works implements Serializable {
     /**
      * 发布时间
      */
-    private String worksTime;
+    private Date worksTime;
     /**
      * 作品标题
      */

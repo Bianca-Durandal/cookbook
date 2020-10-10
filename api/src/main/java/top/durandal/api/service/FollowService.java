@@ -2,6 +2,7 @@ package top.durandal.api.service;
 
 
 import top.durandal.entity.Follow;
+import top.durandal.entity.User;
 
 import java.util.List;
 
@@ -16,7 +17,6 @@ public interface FollowService {
     /**
      * 通过ID查询单条数据
      *
-     * @param 主键
      * @return 实例对象
      */
     Follow queryById();
@@ -49,9 +49,9 @@ public interface FollowService {
     /**
      * 通过主键删除数据
      *
-     * @param 主键
      * @return 是否成功
      */
     boolean deleteById();
 
+    boolean isFollow(Integer followId,Integer userId);
 }

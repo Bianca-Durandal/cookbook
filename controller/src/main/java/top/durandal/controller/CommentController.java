@@ -33,6 +33,7 @@ public class CommentController {
         return ResponseInfo.success(commentRes);
     }
 
+    @GetMapping("getCommentByUserId")
     public ResponseInfo getCommentByUserId(Integer userToId){
         List<Comment> allComment= commentService.getCommentByUserId(userToId);
         if (allComment==null){
