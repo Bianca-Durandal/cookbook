@@ -1,6 +1,7 @@
 package top.durandal.api.service;
 
 
+import com.google.common.collect.Ordering;
 import top.durandal.entity.Orders;
 
 import java.util.List;
@@ -54,4 +55,5 @@ public interface OrdersService {
      */
     boolean deleteById(Integer ordersId);
 
+    List<Orders> getOrderByUserId(Integer userId);
 }

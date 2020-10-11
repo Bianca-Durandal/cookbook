@@ -3,11 +3,11 @@ package top.durandal.controller;
 import com.alibaba.dubbo.config.annotation.Reference;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.security.core.Authentication;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import top.durandal.common.ResponseInfo;
-import top.durandal.entity.Live;
 import top.durandal.entity.User;
 import top.durandal.api.service.UserService;
 import top.durandal.statictext.StaticText;
@@ -92,4 +92,12 @@ public class UserController {
         return ResponseInfo.success(userById);
     }
 
+    @PostMapping("updateEmail")
+    public ResponseInfo updateEmail(@Param("userId") Integer userId, @Param("userEmail") String userEmail){
+        User user = userService.updateEmail(userId, userEmail);
+        if (user==null){
+            return ResponseInfo.error("没有用户信息");
+        }
+        return ResponseInfo.success(user);
+    }
 }

@@ -1,6 +1,7 @@
 package top.durandal.api.service;
 
 
+import top.durandal.entity.Live;
 import top.durandal.entity.LiveRecording;
 
 import java.util.List;
@@ -53,4 +54,7 @@ public interface LiveRecordingService {
      * @return 是否成功
      */
     boolean deleteById(Integer liveRecordingId);
+
+
+    List<LiveRecording> getLiveRecordingByUserId(Integer userId);
 }

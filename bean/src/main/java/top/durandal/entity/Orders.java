@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * (Orders)实体类
@@ -36,5 +37,7 @@ public class Orders implements Serializable {
      * 总价
      */
     private String ordersTotal;
+
+    private Object address;
 
 }

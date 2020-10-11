@@ -1,7 +1,6 @@
 package top.durandal.dao;
 
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 import top.durandal.entity.Orders;
 
@@ -83,4 +82,10 @@ public interface OrdersDao {
      */
     int deleteById(Integer ordersId);
 
+    @Select("select * from orders where user_id = #{userId}")
+    @Results(value = {
+            @Result(property = "address",column = "address_id",
+                    one = @One(select = "top.durandal.dao.AddressDao.queryById"))
+    })
+    List<Orders> getAllOrdersByUserId(Integer userId);
 }

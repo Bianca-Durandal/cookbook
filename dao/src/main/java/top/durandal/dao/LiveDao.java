@@ -1,6 +1,5 @@
 package top.durandal.dao;
 
-import com.sun.tools.javac.code.Lint;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 import top.durandal.entity.Live;
@@ -102,4 +101,12 @@ public interface LiveDao {
     @Insert("insert into live (live_id,user_id,live_img,live_title,live_state,live_number) " +
             "values(#{liveId},#{userId},#{liveImg},#{liveTitle},#{liveState},#{liveNumber})")
     int insertLive(Live live);
+
+    /**
+     * 通过userId获得直播间号，子查询
+     * @param userId
+     * @return
+     */
+    @Select("select live_id from live where user_id = #{userId}")
+    String getLiveId(Integer userId);
 }

@@ -6,6 +6,8 @@ import top.durandal.api.service.LiveRecordingService;
 import top.durandal.common.ResponseInfo;
 import top.durandal.entity.LiveRecording;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("LiveRecording")
 public class LiveRecordingController {
@@ -22,8 +24,12 @@ public class LiveRecordingController {
         return ResponseInfo.success(insert);
     }
 
-    @GetMapping("getLiveRecording")
-    public ResponseInfo getLiveRecording(){
-        return ResponseInfo.success();
+    @GetMapping("getLiveRecordingByUserId")
+    public ResponseInfo getLiveRecordingByUserId(Integer userId){
+        List<LiveRecording> liveRecording = liveRecordingService.getLiveRecordingByUserId(userId);
+        if(liveRecording==null){
+            return ResponseInfo.error("该用户没有直播间");
+        }
+        return ResponseInfo.success(liveRecording);
     }
 }

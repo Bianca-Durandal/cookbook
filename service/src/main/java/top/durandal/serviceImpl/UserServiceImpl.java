@@ -22,15 +22,14 @@ public class UserServiceImpl implements UserService {
 
     public Boolean saveUser(User user) {
         User hasUser = userDao.findByName(user.getUserName());
-        if (hasUser==null){
-            String pass=passwordEncoder.encode(user.getUserPass());
+        if (hasUser == null) {
+            String pass = passwordEncoder.encode(user.getUserPass());
             user.setUserPass(pass);
             user.setUserShow("true");
             user.setUserDate(new Date());
             userDao.saveUser(user);
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -40,11 +39,11 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
-    public String changePass(String userName, String userEmail,String newUserPass) {
+    public String changePass(String userName, String userEmail, String newUserPass) {
         User user = userDao.queryByName(userName);
-        if (user==null){
+        if (user == null) {
             return "没有找到任何用户信息";
-        }else if (!userEmail.equals(user.getUserEmail())){
+        } else if (!userEmail.equals(user.getUserEmail())) {
             return "验证邮箱失败，请重新验证";
         }
         userDao.updateByName(userName, passwordEncoder.encode(newUserPass));
@@ -53,7 +52,7 @@ public class UserServiceImpl implements UserService {
 
     public Integer banByName(String userName) {
         String hasUser = userDao.hasUser(userName);
-        if (hasUser==null){
+        if (hasUser == null) {
             return -1;
         } else if ("false".equals(hasUser)) {
             return 0;
@@ -64,9 +63,9 @@ public class UserServiceImpl implements UserService {
 
     public Integer relieveByName(String userName) {
         String hasUser = userDao.hasUser(userName);
-        if (hasUser==null){
+        if (hasUser == null) {
             return -1;
-        }else if ("false".equals(hasUser)){
+        } else if ("false".equals(hasUser)) {
             userDao.relieveByName(userName);
             return 1;
         }
@@ -75,14 +74,24 @@ public class UserServiceImpl implements UserService {
 
     public User getUserByName(String userName) {
         User user = userDao.queryByName(userName);
-        if(user!=null){
+        if (user != null) {
             return user;
         }
         return null;
     }
 
     public User getUserById(Integer userId) {
-        User user = userDao.getUserById(userId);
-        return user;
+        return userDao.getUserById(userId);
     }
+
+    public User updateEmail(Integer userId, String userEmail) {
+        User userById = userDao.getUserById(userId);
+        if (userById == null) {
+            return null;
+        }
+        userDao.updateEmail(userId,userEmail);
+        return userById;
+    }
+
+
 }

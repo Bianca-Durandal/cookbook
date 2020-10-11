@@ -1,9 +1,6 @@
 package top.durandal.dao;
 
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 import top.durandal.entity.LiveRecording;
 
@@ -92,4 +89,17 @@ public interface LiveRecordingDao {
      */
     @Select("select * from ")
     List<LiveRecording> getLive();
+
+//    @Results(value = {
+//            @Result(property = "liveId",column = "live_id",
+//            one = @One(select = "top.durandal.dao.LiveDao.getLiveId"))
+//    })
+
+    /**
+     * 通过直播间号获得记录
+     * @param liveId
+     * @return
+     */
+    @Select("select * from live_recording where live_id = #{liveId}")
+    List<LiveRecording> getLiveRecordingByUserId(String liveId);
 }

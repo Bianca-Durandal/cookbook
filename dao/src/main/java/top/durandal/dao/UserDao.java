@@ -47,4 +47,7 @@ public interface UserDao {
     @Select("select user_id,user_name,user_date,user_email,user_phone,user_img,user_day,user_sex," +
             "user_home,user_now,user_self,user_job from user where user_id=#{userId}")
     User getUserById(Integer userId);
+
+    @Update("update user set user_email = #{userEmail} where user_id = #{userId}")
+    int updateEmail(@Param("userId") Integer userId, @Param("userEmail")String userEmail);
 }

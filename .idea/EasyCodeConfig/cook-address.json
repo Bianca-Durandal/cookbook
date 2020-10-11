@@ -45,10 +45,17 @@
     "shortType" : null,
     "custom" : false,
     "ext" : { }
+  }, {
+    "name" : "addressCode",
+    "comment" : null,
+    "type" : null,
+    "shortType" : null,
+    "custom" : false,
+    "ext" : { }
   } ],
   "pkColumn" : null,
   "otherColumn" : null,
-  "savePackageName" : "top.durandal.api",
-  "savePath" : "./api/src/main/java/top/durandal/api",
-  "saveModelName" : "api"
+  "savePackageName" : "top.durandal.dao",
+  "savePath" : "./dao/src/main/java/top/durandal/dao",
+  "saveModelName" : "dao"
 }

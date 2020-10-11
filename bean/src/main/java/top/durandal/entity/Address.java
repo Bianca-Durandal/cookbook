@@ -40,4 +40,8 @@ public class Address implements Serializable {
      * 详细地址
      */
     private String addressAddress;
+
+    private Integer addressPostcode;
+
+    private String  addressNumber;
 }
