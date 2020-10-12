@@ -37,4 +37,9 @@ public class CollectionServiceImpl implements CollectionService {
         int changeLine = collectionDao.insertCollection(userId, worksId);
         return changeLine;
     }
+
+    public int delete(Integer userId, Integer worksId) {
+        int deleteNum = collectionDao.delete(userId, worksId);
+        return deleteNum;
+    }
 }

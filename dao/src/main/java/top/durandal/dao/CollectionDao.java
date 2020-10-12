@@ -17,9 +17,10 @@ public interface CollectionDao {
      * 通过worksId获得所有的关注列表
      * @param worksId
      */
-    @Select("select user_id from collection where works_id = #{worksId}")
+    @Select("select * from collection where works_id = #{worksId}")
     @Results({
-            @Result(property = "userMsg",column = "user_id",one = @One(select = "top.durandal.dao.UserDao.getUserById"))
+            @Result(property = "userMsg",column = "user_id",one = @One(select = "top.durandal.dao.UserDao.getUserById")),
+            @Result(property = "works",column = "works_id",one = @One(select = "top.durandal.dao.WorksDao.queryById"))
     })
     List<Collection> getCollectionByWorksId(int worksId);
 
@@ -32,4 +33,7 @@ public interface CollectionDao {
 
     @Insert("insert into collection (user_id,works_id) values (#{userId},#{worksId})")
     int insertCollection(@Param("userId") Integer userId,@Param("worksId") Integer worksId);
+
+    @Delete("delete from collection where user_id=#{userId} and works_id = #{worksId}")
+    int delete(@Param("userId") Integer userId, @Param("worksId") Integer worksId);
 }

@@ -36,4 +36,13 @@ public class GoodsServiceImpl implements GoodsService {
     public boolean deleteById(Integer goodsId) {
         return false;
     }
+
+    public List<Goods> getGoods(int startPage) {
+        int start = (startPage-1)*12;
+        List<Goods> goods = goodsDao.getGoods(start);
+        if (goods.size()!=0){
+            return goods;
+        }
+        return null;
+    }
 }

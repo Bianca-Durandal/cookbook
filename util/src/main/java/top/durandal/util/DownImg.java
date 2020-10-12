@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class DownImg {
-    public String upload(MultipartFile file) {
+    public static String upload(MultipartFile file) {
         if (file.isEmpty()) {
             return "上传失败，请选择文件";
         }
@@ -16,7 +16,6 @@ public class DownImg {
         File dest = new File(filePath + fileName);
         try {
             file.transferTo(dest);
-
             return fileName;
         } catch (IOException e) {
         }

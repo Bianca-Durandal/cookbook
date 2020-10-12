@@ -3,3 +3,7 @@ spring:
     user:
       name: user
       password: 123
+  redis:
+    database:
+    host: localhost
+    port: 6379

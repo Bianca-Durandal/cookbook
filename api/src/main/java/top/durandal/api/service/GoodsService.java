@@ -54,4 +54,5 @@ public interface GoodsService {
      */
     boolean deleteById(Integer goodsId);
 
+    List<Goods> getGoods(int startPage);
 }

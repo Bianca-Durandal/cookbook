@@ -15,4 +15,6 @@ public interface CollectionService {
     List<Collection> getAllCollection(Integer userId);
 
     int insertCollection(Integer userId, Integer worksId);
+
+    int delete(Integer userId, Integer worksId);
 }

@@ -85,4 +85,6 @@ public interface GoodsDao {
      */
     int deleteById(Integer goodsId);
 
+    @Select("select * from goods limit #{start},12 ")
+    List<Goods> getGoods(int start);
 }

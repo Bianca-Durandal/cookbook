@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -18,8 +17,8 @@ public class Collection implements Serializable {
     @ApiModelProperty(hidden = true)
     private Works works;
 
-    @ApiModelProperty(hidden = true)
-    private List<Integer> userId;
+//    @ApiModelProperty(hidden = true)
+//    private List<Integer> userId;
 
     @ApiModelProperty(hidden = true)
     private User userMsg;
