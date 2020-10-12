@@ -1,7 +1,6 @@
 package top.durandal.dao;
 
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 import top.durandal.entity.Shoppingcar;
 
@@ -23,6 +22,7 @@ public interface ShoppingcarDao {
      * @param shoppingcarId 主键
      * @return 实例对象
      */
+    @Select("select * from shoppingcar where shopping_id=#{shoppingcarId}")
     Shoppingcar queryById(Integer shoppingcarId);
 
     /**
@@ -49,6 +49,8 @@ public interface ShoppingcarDao {
      * @param shoppingcar 实例对象
      * @return 影响行数
      */
+    @Insert("insert into shoppingcar (user_id,goods_id,shop_num) values(#{userId},#{goodsId},#{shopNum})")
+    @Options(useGeneratedKeys = true,keyProperty = "shoppingcarId")
     int insert(Shoppingcar shoppingcar);
 
     /**
@@ -83,4 +85,10 @@ public interface ShoppingcarDao {
      */
     int deleteById(Integer shoppingcarId);
 
+    @Select("select * from shoppingcar where user_id=#{userId}")
+    @Results({
+            @Result(property = "goods",column = "goods_id",
+            one = @One(select = "top.durandal.dao.GoodsDao.queryById"))
+    })
+    List<Shoppingcar> getAllCartByUserId(Integer userId);
 }

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import top.durandal.api.service.OrdersService;
 import top.durandal.dao.OrdersDao;
 import top.durandal.entity.Orders;
+import top.durandal.util.MakeOrderNumber;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -25,6 +26,11 @@ public class OrdersServiceImpl implements OrdersService {
     }
 
     public Orders insert(Orders orders) {
+        orders.setOrdersNumber(MakeOrderNumber.getOrderNumber());
+        int isInsert = ordersDao.insert(orders);
+        if (isInsert!=0){
+            return orders;
+        }
         return null;
     }
 

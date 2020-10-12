@@ -4,6 +4,8 @@ import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 import top.durandal.entity.User;
 
+import java.util.List;
+
 @Mapper
 @Repository
 public interface UserDao {
@@ -40,9 +42,9 @@ public interface UserDao {
     @Update("update user set user_show = 'true' where user_name = #{userName}")
     void relieveByName(String userName);
 
-    @Select("select user_id,user_name,user_date,user_email,user_phone,user_img,user_day,user_sex," +
-            "user_home,user_now,user_self,user_job from user where user_id=#{userId}")
-    User findUserById(Integer userId);
+//    @Select("select user_id,user_name,user_date,user_email,user_phone,user_img,user_day,user_sex," +
+//            "user_home,user_now,user_self,user_job from user where user_id=#{userId}")
+//    User findUserById(Integer userId);
 
     @Select("select user_id,user_name,user_date,user_email,user_phone,user_img,user_day,user_sex," +
             "user_home,user_now,user_self,user_job from user where user_id=#{userId}")
@@ -50,4 +52,7 @@ public interface UserDao {
 
     @Update("update user set user_email = #{userEmail} where user_id = #{userId}")
     int updateEmail(@Param("userId") Integer userId, @Param("userEmail")String userEmail);
+
+    @Select("select user_email,user_password from user where user_email = #{userEmail}")
+    User findByEmail(String userEmail);
 }

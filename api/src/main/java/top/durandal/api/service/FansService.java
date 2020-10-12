@@ -2,6 +2,7 @@ package top.durandal.api.service;
 
 
 import top.durandal.entity.Fans;
+import top.durandal.entity.User;
 
 import java.util.List;
 
@@ -16,7 +17,6 @@ public interface FansService {
     /**
      * 通过ID查询单条数据
      *
-     * @param 主键
      * @return 实例对象
      */
     Fans queryById();
@@ -49,9 +49,13 @@ public interface FansService {
     /**
      * 通过主键删除数据
      *
-     * @param 主键
      * @return 是否成功
      */
     boolean deleteById();
 
+    Boolean getFans(Integer userId,Integer followId);
+
+    List<Fans> getAllFans(Integer userId);
+
+    List<Fans> getAllFollow(Integer userId);
 }

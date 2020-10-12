@@ -1,5 +1,8 @@
 package top.durandal.api.service;
 
+import top.durandal.entity.Collection;
+import top.durandal.entity.Works;
+
 import java.util.List;
 
 public interface CollectionService {
@@ -8,4 +11,8 @@ public interface CollectionService {
      * @param worksId
      */
     List getCollectionByWorksId(int worksId);
+
+    List<Collection> getAllCollection(Integer userId);
+
+    int insertCollection(Integer userId, Integer worksId);
 }

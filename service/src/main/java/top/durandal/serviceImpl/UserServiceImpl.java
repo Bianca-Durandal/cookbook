@@ -21,10 +21,9 @@ public class UserServiceImpl implements UserService {
     PasswordEncoder passwordEncoder;
 
     public Boolean saveUser(User user) {
-        User hasUser = userDao.findByName(user.getUserName());
+        User hasUser = userDao.findByEmail(user.getUserEmail());
         if (hasUser == null) {
-            String pass = passwordEncoder.encode(user.getUserPass());
-            user.setUserPass(pass);
+//            String pass = passwordEncoder.encode(user.getUserPass());
             user.setUserShow("true");
             user.setUserDate(new Date());
             userDao.saveUser(user);

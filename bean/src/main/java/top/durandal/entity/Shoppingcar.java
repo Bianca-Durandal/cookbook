@@ -1,5 +1,8 @@
 package top.durandal.entity;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,6 +22,7 @@ public class Shoppingcar implements Serializable {
     /**
      * 购物车ID
      */
+    @ApiModelProperty(hidden = true)
     private Integer shoppingcarId;
     /**
      * 用户ID
@@ -32,5 +36,7 @@ public class Shoppingcar implements Serializable {
      * 商品个数
      */
     private Integer shopNum;
+
+    private Goods goods;
 
 }

@@ -54,4 +54,5 @@ public interface CategoriesService {
      */
     boolean deleteById(Integer categoriesId);
 
+    List<Categories> getAll();
 }

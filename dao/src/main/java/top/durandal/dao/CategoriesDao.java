@@ -1,7 +1,6 @@
 package top.durandal.dao;
 
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 import top.durandal.entity.Categories;
 
@@ -23,6 +22,11 @@ public interface CategoriesDao {
      * @param categoriesId 主键
      * @return 实例对象
      */
+    @Select("select * from categories where categories_id = #{categoriesId}")
+    @Results({
+            @Result(property = "categoriesMaster" ,column = "categories_master",
+            one = @One(select = "top.durandal.dao.CategoriesDao.queryById"))
+    })
     Categories queryById(Integer categoriesId);
 
     /**
@@ -83,4 +87,10 @@ public interface CategoriesDao {
      */
     int deleteById(Integer categoriesId);
 
+    @Select("select * from categories")
+    @Results({
+            @Result(property = "categoriesMaster" ,column = "categories_master",
+                    one = @One(select = "top.durandal.dao.CategoriesDao.queryById"))
+    })
+    List<Categories> getAll();
 }

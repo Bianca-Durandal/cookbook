@@ -68,8 +68,8 @@ public class WorksServiceImpl implements WorksService {
         return null;
     }
 
-    public List<Works> getWorksByType() {
-        List<Works> allLive = worksDao.getWorksByType();
+    public List<Works> getWorksByType(String type) {
+        List<Works> allLive = worksDao.getWorksByType(type);
         if (allLive.size()!=0){
             return allLive;
         }

@@ -2,6 +2,7 @@ package top.durandal.dao;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 import top.durandal.entity.Goods;
 
@@ -23,6 +24,7 @@ public interface GoodsDao {
      * @param goodsId 主键
      * @return 实例对象
      */
+    @Select("select * from goods where goods_id = #{goodsId}")
     Goods queryById(Integer goodsId);
 
     /**

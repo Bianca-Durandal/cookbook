@@ -54,4 +54,5 @@ public interface ShoppingcarService {
      */
     boolean deleteById(Integer shoppingcarId);
 
+    List<Shoppingcar> getAllCartByUserId(Integer userId);
 }

@@ -45,8 +45,8 @@ public class WorksController {
     }
 
     @GetMapping("getWorksByType")
-    public ResponseInfo getWorksByType() {
-        List<Works> allLive = worksService.getWorksByType();
+    public ResponseInfo getWorksByType(String type) {
+        List<Works> allLive = worksService.getWorksByType(type);
         if (allLive == null) {
             return ResponseInfo.error("没有视频");
         }

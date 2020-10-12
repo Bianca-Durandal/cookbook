@@ -1,9 +1,9 @@
 package top.durandal.dao;
 
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 import top.durandal.entity.Fans;
+import top.durandal.entity.User;
 
 import java.util.List;
 
@@ -20,7 +20,6 @@ public interface FansDao {
     /**
      * 通过ID查询单条数据
      *
-     * @param 主键
      * @return 实例对象
      */
     Fans queryById();
@@ -78,9 +77,24 @@ public interface FansDao {
     /**
      * 通过主键删除数据
      *
-     * @param 主键
      * @return 影响行数
      */
     int deleteById();
 
+    @Select("select fans_id from fans where user_id = #{userId}")
+    List<Integer> getFans(Integer userId);
+
+    @Select("select fans_id from fans where user_id = #{userId}")
+    @Results({
+            @Result(property = "fans",column = "fans_id",
+            one = @One(select = "top.durandal.dao.UserDao.getUserById"))
+    })
+    List<Fans> getAllFans(Integer userId);
+
+    @Select("select user_id from fans where fans_id = #{userId}")
+    @Results({
+            @Result(property = "user",column = "user_id",
+                    one = @One(select = "top.durandal.dao.UserDao.getUserById"))
+    })
+    List<Fans> getAllFollow(Integer userId);
 }

@@ -115,8 +115,8 @@ public interface WorksDao {
      * 获得所有的视频
      * @return
      */
-    @Select("select * from works where works_type='视频'")
-    List<Works> getWorksByType();
+    @Select("select * from works where works_type=#{type}")
+    List<Works> getWorksByType(String type);
 
     /**
      * 通过用户id获得该用户所有的作品

@@ -2,6 +2,7 @@ package top.durandal.dao;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 import top.durandal.entity.OrderDetails;
 
@@ -20,10 +21,11 @@ public interface OrderDetailsDao {
     /**
      * 通过ID查询单条数据
      *
-     * @param
+     * @param ordersId
      * @return 实例对象
      */
-    OrderDetails queryById();
+    @Select("select * from orderDetails where order_id = #{ordersId}")
+    OrderDetails queryByOrdersId(Integer ordersId);
 
     /**
      * 查询指定行数据

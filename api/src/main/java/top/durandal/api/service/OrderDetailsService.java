@@ -19,7 +19,7 @@ public interface OrderDetailsService {
      * @param 主键
      * @return 实例对象
      */
-    OrderDetails queryById();
+    OrderDetails queryByOrdersId(Integer ordersId);
 
     /**
      * 查询多条数据

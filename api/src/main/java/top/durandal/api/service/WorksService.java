@@ -71,7 +71,7 @@ public interface WorksService {
      * 获得所有视频(不分类)
      * @return
      */
-    List<Works> getWorksByType();
+    List<Works> getWorksByType(String type);
 
     /**
      * 通过用户id查找所有作品

@@ -22,10 +22,6 @@ public class Comment implements Serializable {
      */
     private Integer worksId;
     /**
-     * 用户ID
-     */
-    private Integer userId;
-    /**
      * 发布内容
      */
     private String commentContent;

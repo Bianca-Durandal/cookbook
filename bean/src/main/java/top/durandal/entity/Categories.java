@@ -27,5 +27,7 @@ public class Categories implements Serializable {
     /**
      * 商品上级ID
      */
-    private Integer categoriesMaster;
+//    private int categoriesMaster;
+
+    private Categories categoriesMaster;
 }

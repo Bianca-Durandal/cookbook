@@ -54,4 +54,5 @@ public interface AddressService {
      */
     boolean deleteById(Integer addressId);
 
+    List<Address> getAddressByUserId(Integer userId);
 }

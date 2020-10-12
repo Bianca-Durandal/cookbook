@@ -1,5 +1,6 @@
 package top.durandal.entity;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,7 @@ public class Works implements Serializable {
     /**
      * 作品ID
      */
+    @ApiModelProperty(hidden = true)
     private Integer worksId;
     /**
      * 用户ID

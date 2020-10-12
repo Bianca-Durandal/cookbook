@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -50,5 +51,7 @@ public class User implements Serializable {
     private String userHome;
 
     private String userNow;
+
+    private List<User> userList;
 
 }

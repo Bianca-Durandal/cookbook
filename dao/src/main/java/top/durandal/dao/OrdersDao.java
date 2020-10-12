@@ -48,6 +48,7 @@ public interface OrdersDao {
      * @param orders 实例对象
      * @return 影响行数
      */
+    @Insert("insert into orders (user_id,address_id,orders_number,orders_total)")
     int insert(Orders orders);
 
     /**

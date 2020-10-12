@@ -1,8 +1,6 @@
 package top.durandal.dao;
 
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 import top.durandal.entity.Address;
 
@@ -51,6 +49,9 @@ public interface AddressDao {
      * @param address 实例对象
      * @return 影响行数
      */
+    @Insert("insert into address (user_id,address_province,address_city,address_district,address_address,address_postcode,address_number " +
+            "values(#{userId},#{addressProvince},#{addressCity},#{addressDistrict},#{addressAddress},#{addressPostcode},#{addressNumber})")
+    @Options(useGeneratedKeys = true,keyProperty = "addressId")
     int insert(Address address);
 
     /**
@@ -85,4 +86,11 @@ public interface AddressDao {
      */
     int deleteById(Integer addressId);
 
+    /**
+     * 通过用户id获得所有地址信息
+     * @param userId
+     * @return
+     */
+    @Select("select * from address where user_id = #{userId}")
+    List<Address> getAddressByUserId(Integer userId);
 }
