@@ -22,7 +22,7 @@ public interface CollectionDao {
             @Result(property = "userMsg",column = "user_id",one = @One(select = "top.durandal.dao.UserDao.getUserById")),
             @Result(property = "works",column = "works_id",one = @One(select = "top.durandal.dao.WorksDao.queryById"))
     })
-    List<Collection> getCollectionByWorksId(int worksId);
+    List<Collection> getCollectionByWorksId(Integer worksId);
 
     @Select("select works_id from collection where user_id = #{userId}")
     @Results({

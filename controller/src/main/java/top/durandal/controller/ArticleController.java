@@ -18,7 +18,7 @@ public class ArticleController {
     ArticleService articleService;
 
     @GetMapping("getArticleByWorksId")
-    public ResponseInfo getArticleByWorksId(int worksId){
+    public ResponseInfo getArticleByWorksId(Integer worksId){
         List<Article> articles = articleService.queryByWorksId(worksId);
         if (articles==null){
             return ResponseInfo.error("没有文章详情");

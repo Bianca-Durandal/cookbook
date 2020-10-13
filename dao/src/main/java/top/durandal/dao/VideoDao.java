@@ -17,5 +17,5 @@ public interface VideoDao {
      * @return
      */
     @Select("select * from video where works_id = #{worksId}")
-    List<Video> getVideoByWorksId(int worksId);
+    List<Video> getVideoByWorksId(Integer worksId);
 }

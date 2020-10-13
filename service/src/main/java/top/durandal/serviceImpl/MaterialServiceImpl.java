@@ -36,7 +36,7 @@ public class MaterialServiceImpl implements MaterialService {
         return false;
     }
 
-    public List<Material> getMaterialByWorksId(int worksId) {
+    public List<Material> getMaterialByWorksId(Integer worksId) {
         List<Material> material = materialDao.getMaterialByWorksId(worksId);
         if (material.size()!=0){
             return material;

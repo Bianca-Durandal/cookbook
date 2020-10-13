@@ -90,5 +90,5 @@ public interface ArticleDao {
      * @return
      */
     @Select("select article_step,article_img,article_content from article where works_id = #{workId}")
-    List<Article> queryByWorksId(int worksId);
+    List<Article> queryByWorksId(Integer worksId);
 }

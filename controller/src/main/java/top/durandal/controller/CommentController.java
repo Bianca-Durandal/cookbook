@@ -18,7 +18,7 @@ public class CommentController {
     CommentService commentService;
 
     @GetMapping("getCommentByWorksId")
-    public ResponseInfo getCommentByWorksId(int worksId){
+    public ResponseInfo getCommentByWorksId(Integer worksId){
         List<Comment> commentByWorksId = commentService.getCommentByWorksId(worksId);
         if (commentByWorksId==null){
             return ResponseInfo.error("没有评论");

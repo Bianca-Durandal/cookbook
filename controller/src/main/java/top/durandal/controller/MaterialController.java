@@ -21,7 +21,7 @@ public class MaterialController {
     MaterialService materialService;
 
     @GetMapping("getMaterialByWorksId")
-    public ResponseInfo getMaterialByWorksId(int worksId){
+    public ResponseInfo getMaterialByWorksId(Integer worksId){
         List<Material> material = materialService.getMaterialByWorksId(worksId);
         if (material==null){
             return ResponseInfo.error("没有食材");

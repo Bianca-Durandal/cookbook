@@ -54,7 +54,7 @@ public class WorksController {
     }
 
     @GetMapping("getWorksByWorksId")
-    public ResponseInfo getWorksByWorksId(int worksId) {
+    public ResponseInfo getWorksByWorksId(Integer worksId) {
         Works works = worksService.queryById(worksId);
         List<Object> worksList = new ArrayList<Object>();
         worksList.add(works);
@@ -79,7 +79,7 @@ public class WorksController {
     }
 
     @GetMapping("getWorksByUserId")
-    public ResponseInfo getWorksByUserId(int userId){
+    public ResponseInfo getWorksByUserId(Integer userId){
         System.out.println(userId);
         List<Works> allWorks = worksService.getWorksByUserId(userId);
         if (allWorks==null){

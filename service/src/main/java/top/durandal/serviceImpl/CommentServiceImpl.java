@@ -39,7 +39,7 @@ public class CommentServiceImpl implements CommentService {
         return false;
     }
 
-    public List<Comment> getCommentByWorksId(int worksId) {
+    public List<Comment> getCommentByWorksId(Integer worksId) {
         List<Comment> commentByWorksId = commentDao.getCommentByWorksId(worksId);
         if (commentByWorksId.size()!=0){
             return commentByWorksId;

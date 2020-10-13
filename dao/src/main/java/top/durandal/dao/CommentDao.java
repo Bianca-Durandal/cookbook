@@ -95,7 +95,7 @@ public interface CommentDao {
             @Result(property = "worksMsg",column = "works_id", one = @One(select = "top.durandal.dao.WorksDao.queryById")),
             @Result(property = "userFromMsg",column = "user_from_id", one = @One(select = "top.durandal.dao.UserDao.getUserById"))
     })
-    List<Comment> getCommentByWorksId(int worksId);
+    List<Comment> getCommentByWorksId(Integer worksId);
 
     /**
      * 根据id查找用户收到的所有评论

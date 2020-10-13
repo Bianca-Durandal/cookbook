@@ -16,7 +16,7 @@ public class OrderDetailsController {
     OrderDetailsService orderDetailsService;
 
     @GetMapping("getOrderDetailsByOrdersId")
-    public ResponseInfo getOrderDetailsByOrdersId(int ordersId){
+    public ResponseInfo getOrderDetailsByOrdersId(Integer ordersId){
         OrderDetails orderDetails = orderDetailsService.queryByOrdersId(ordersId);
         if (orderDetails==null){
             return ResponseInfo.error("没有订单信息");

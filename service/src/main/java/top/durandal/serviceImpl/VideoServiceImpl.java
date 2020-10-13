@@ -16,7 +16,7 @@ public class VideoServiceImpl implements VideoService {
     @Resource
     VideoDao videoDao;
 
-    public List<Video> getVideoByWorksId(int worksId) {
+    public List<Video> getVideoByWorksId(Integer worksId) {
         List<Video> videoByWorksId = videoDao.getVideoByWorksId(worksId);
         if (videoByWorksId.size()!=0){
             return videoByWorksId;

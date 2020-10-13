@@ -19,7 +19,7 @@ public class GoodsController {
     GoodsService goodsService;
 
     @GetMapping("getGoodsByGoodsId")
-    public ResponseInfo getGoodsByGoodsId(int goodsId){
+    public ResponseInfo getGoodsByGoodsId(Integer goodsId){
         Goods goods = goodsService.queryById(goodsId);
         if (goods==null){
             return ResponseInfo.error("没有该商品的信息");
@@ -28,7 +28,7 @@ public class GoodsController {
     }
 
     @GetMapping("getGoods")
-    public ResponseInfo getGoods(int startPage){
+    public ResponseInfo getGoods(Integer startPage){
         List<Goods> goods = goodsService.getGoods(startPage);
         if (goods==null){
             return ResponseInfo.error("没有数据");

@@ -90,5 +90,5 @@ public interface MaterialDao {
      * @return
      */
     @Select("select * from material where works_id = #{worksId}")
-    List<Material> getMaterialByWorksId(int worksId);
+    List<Material> getMaterialByWorksId(Integer worksId);
 }

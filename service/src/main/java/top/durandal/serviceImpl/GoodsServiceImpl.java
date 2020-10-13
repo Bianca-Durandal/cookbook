@@ -37,7 +37,7 @@ public class GoodsServiceImpl implements GoodsService {
         return false;
     }
 
-    public List<Goods> getGoods(int startPage) {
+    public List<Goods> getGoods(Integer startPage) {
         int start = (startPage-1)*12;
         List<Goods> goods = goodsDao.getGoods(start);
         if (goods.size()!=0){

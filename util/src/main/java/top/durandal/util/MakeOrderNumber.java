@@ -16,4 +16,15 @@ public final class MakeOrderNumber {
         }
         return orderNumber.toString();
     }
+
+    public static String getRandomNumber(Integer numberLength) {
+        String allNum = "0123456789";
+        Random random = new Random();
+        StringBuffer orderNumber = new StringBuffer();
+        for (int i = 0; i < numberLength; i++) {
+            int number = random.nextInt(10);
+            orderNumber.append(allNum.charAt(number));
+        }
+        return orderNumber.toString();
+    }
 }

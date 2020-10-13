@@ -54,5 +54,5 @@ public interface MaterialService {
      */
     boolean deleteById(Integer materialId);
 
-    List<Material> getMaterialByWorksId(int worksId);
+    List<Material> getMaterialByWorksId(Integer worksId);
 }

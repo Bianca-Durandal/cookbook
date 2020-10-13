@@ -65,7 +65,7 @@ public interface WorksService {
      * @param sortId
      * @return
      */
-    List<Works> getWorksBySortId(int sortId);
+    List<Works> getWorksBySortId(Integer sortId);
 
     /**
      * 获得所有视频(不分类)
@@ -78,5 +78,5 @@ public interface WorksService {
      * @param userId
      * @return
      */
-    List<Works> getWorksByUserId(int userId);
+    List<Works> getWorksByUserId(Integer userId);
 }

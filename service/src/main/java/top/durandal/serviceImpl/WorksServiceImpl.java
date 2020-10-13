@@ -60,7 +60,7 @@ public class WorksServiceImpl implements WorksService {
         return workList;
     }
 
-    public List<Works> getWorksBySortId(int sortId) {
+    public List<Works> getWorksBySortId(Integer sortId) {
         List<Works> worksArticleBySortId = worksDao.getWorksBySortId(sortId);
         if (worksArticleBySortId.size()!=0){
             return worksArticleBySortId;
@@ -76,7 +76,7 @@ public class WorksServiceImpl implements WorksService {
         return null;
     }
 
-    public List<Works> getWorksByUserId(int userId) {
+    public List<Works> getWorksByUserId(Integer userId) {
         List<Works> works = worksDao.getWorksByUserId(userId);
         System.out.println(works);
         if (works.size()!=0){

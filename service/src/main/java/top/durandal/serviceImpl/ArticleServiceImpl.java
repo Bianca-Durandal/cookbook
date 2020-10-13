@@ -36,7 +36,7 @@ public class ArticleServiceImpl implements ArticleService {
         return false;
     }
 
-    public List<Article> queryByWorksId(int worksId) {
+    public List<Article> queryByWorksId(Integer worksId) {
         List<Article> articles = articleDao.queryByWorksId(worksId);
         if (articles.size() != 0) {
             return articles;

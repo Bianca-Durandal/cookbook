@@ -57,7 +57,7 @@ public interface ArticleService {
      * @param worksId
      * @return
      */
-    List<Article> queryByWorksId(int worksId);
+    List<Article> queryByWorksId(Integer worksId);
 
     /**
      * 将所有步骤列表插入数据库

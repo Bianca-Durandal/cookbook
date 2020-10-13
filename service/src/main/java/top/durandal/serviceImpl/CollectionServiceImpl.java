@@ -17,7 +17,7 @@ public class CollectionServiceImpl implements CollectionService {
     @Resource
     CollectionDao collectionDao;
 
-    public List getCollectionByWorksId(int worksId) {
+    public List getCollectionByWorksId(Integer worksId) {
         List collectionUser = collectionDao.getCollectionByWorksId(worksId);
         if (collectionUser.size()!=0){
             return collectionUser;

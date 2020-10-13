@@ -17,7 +17,7 @@ public class CollectionController {
     CollectionService collectionService;
 
     @GetMapping("getCollectionByWorksId")
-    public ResponseInfo getCollectionByUserId(int worksId){
+    public ResponseInfo getCollectionByUserId(Integer worksId){
         List collectionUser = collectionService.getCollectionByWorksId(worksId);
         if (collectionUser == null) {
             return ResponseInfo.error("该作品没有被收藏");

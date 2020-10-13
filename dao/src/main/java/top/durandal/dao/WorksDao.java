@@ -109,7 +109,7 @@ public interface WorksDao {
      * @return
      */
     @Select("select * from works where works_type='图文' and sort_id = #{sortId}")
-    List<Works> getWorksBySortId(int sortId);
+    List<Works> getWorksBySortId(Integer sortId);
 
     /**
      * 获得所有的视频
@@ -124,5 +124,5 @@ public interface WorksDao {
      * @return
      */
     @Select("select * from works where user_id = #{userId}")
-    List<Works> getWorksByUserId(int userId);
+    List<Works> getWorksByUserId(Integer userId);
 }

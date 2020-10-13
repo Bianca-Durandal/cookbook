@@ -20,7 +20,7 @@ public class VideoController {
     VideoService videoService;
 
     @GetMapping("getVideoByWorksId")
-    public ResponseInfo getVideoByWorksId(int worksId){
+    public ResponseInfo getVideoByWorksId(Integer worksId){
         List<Video> videoByWorksId = videoService.getVideoByWorksId(worksId);
         if (videoByWorksId==null){
             return ResponseInfo.error("没有视频信息");

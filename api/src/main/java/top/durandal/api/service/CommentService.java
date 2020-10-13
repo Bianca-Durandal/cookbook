@@ -59,7 +59,7 @@ public interface CommentService {
      * @param worksId
      * @return
      */
-    List<Comment> getCommentByWorksId(int worksId);
+    List<Comment> getCommentByWorksId(Integer worksId);
 
     /**
      * 通过油用户Id获得所有评论
