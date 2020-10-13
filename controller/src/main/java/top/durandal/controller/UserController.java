@@ -7,15 +7,12 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.security.core.Authentication;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import top.durandal.api.service.UserService;
 import top.durandal.common.ResponseInfo;
 import top.durandal.entity.User;
-import top.durandal.api.service.UserService;
 import top.durandal.statictext.StaticText;
 
-import javax.annotation.Resource;
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -24,7 +21,7 @@ public class UserController {
 
     @Reference
     UserService userService;
-
+    
     @PostMapping("/save")
     @ApiOperation(value = "注册用户",notes = "<p style='color: red'>描述：</p>注册用户个人信息")
     public ResponseInfo saveUser(@RequestBody @Valid User user, BindingResult bindingResult) {
@@ -100,4 +97,11 @@ public class UserController {
         }
         return ResponseInfo.success(user);
     }
+
+//    调用验证码发送工具类，发送验证码
+//    @RequestMapping("getMsg")
+//    public ResponseInfo getMsg(){
+//        PhoneMessage.getPhoneMessage("15803598138", MakeOrderNumber.getRandomNumber(6));
+//        return ResponseInfo.success();
+//    }
 }

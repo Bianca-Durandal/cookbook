@@ -8,12 +8,13 @@ import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.http.MethodType;
 import com.aliyuncs.profile.DefaultProfile;
 
-public final class PhoneMessage {
+public final  class PhoneMessage {
     public static void getPhoneMessage(String phoneNumber,String templateParamNum){
-        String accessKeyId;
-        String accessSecret;
+
+        String accessKeyId="LTAI4GJgkNxHAmPDXgS3arJ3";
+        String accessSecret="V5iblxMlHcIgeUxBphL5coSltrb7BP";
         
-        DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "<accessKeyId>", "<accessSecret>");
+        DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", accessKeyId, accessSecret);
         IAcsClient client = new DefaultAcsClient(profile);
 
         CommonRequest request = new CommonRequest();
