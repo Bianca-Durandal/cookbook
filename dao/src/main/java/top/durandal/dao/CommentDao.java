@@ -91,6 +91,10 @@ public interface CommentDao {
      * @return
      */
     @Select("select * from comment where works_id = #{workId}")
+    @Results({
+            @Result(property = "worksMsg",column = "works_id", one = @One(select = "top.durandal.dao.WorksDao.queryById")),
+            @Result(property = "userFromMsg",column = "user_from_id", one = @One(select = "top.durandal.dao.UserDao.getUserById"))
+    })
     List<Comment> getCommentByWorksId(int worksId);
 
     /**
