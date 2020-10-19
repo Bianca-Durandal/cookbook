@@ -4,8 +4,6 @@ import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 import top.durandal.entity.User;
 
-import java.util.List;
-
 @Mapper
 @Repository
 public interface UserDao {
@@ -14,12 +12,8 @@ public interface UserDao {
      * @param user
      * @return
      */
-    @Results(id="user",value = {
-            @Result(property="userId",column="user_id",id = true)
-    })
-    @Insert("insert into user(user_name,user_pass,user_date,user_phone,user_email" +
-            ",user_show) values(#{userName},#{userPass},#{userDate}," +
-            "#{userPhone},#{userEmail},#{userShow})")
+    @Insert("insert into user(user_name,user_pass,user_date,user_phone,user_email,user_img,user_show) " +
+                    "values(#{userName},#{userPass},#{userDate},#{userPhone},#{userEmail},#{userImg},#{userShow})")
     @Options(useGeneratedKeys = true,keyProperty = "userId",keyColumn="user_id")
     int saveUser(User user);
 
@@ -53,6 +47,6 @@ public interface UserDao {
     @Update("update user set user_email = #{userEmail} where user_id = #{userId}")
     int updateEmail(@Param("userId") Integer userId, @Param("userEmail")String userEmail);
 
-    @Select("select user_email,user_password from user where user_email = #{userEmail}")
+    @Select("select user_email,user_pass from user where user_email = #{userEmail}")
     User findByEmail(String userEmail);
 }

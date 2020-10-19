@@ -1,7 +1,6 @@
 package top.durandal.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.*;
 import top.durandal.api.service.CollectionService;
 import top.durandal.common.ResponseInfo;
@@ -35,7 +34,7 @@ public class CollectionController {
     }
 
     @PostMapping("insertCollection")
-    public ResponseInfo insertCollection(@Param("userId") Integer userId,@Param("worksId") Integer worksId){
+    public ResponseInfo insertCollection(Integer userId,Integer worksId){
         int insert = collectionService.insertCollection(userId, worksId);
         if (insert==0){
             return ResponseInfo.error("插入失败");
@@ -44,7 +43,7 @@ public class CollectionController {
     }
 
     @DeleteMapping("deleteCollection")
-    public ResponseInfo deleteCollection(@Param("userId") Integer userId,@Param("worksId") Integer worksId){
+    public ResponseInfo deleteCollection(Integer userId,Integer worksId){
         int deleteNum = collectionService.delete(userId, worksId);
         if (deleteNum==0){
             return ResponseInfo.error("取消失败");

@@ -23,6 +23,7 @@ public class CustomUserDetailService implements UserDetailsService {
     @Resource
     PasswordEncoder passwordEncoder;
 
+    @Override
     public UserDetails loadUserByUsername(String userEmail) throws UsernameNotFoundException {
 
         User user = userDao.findByEmail(userEmail);

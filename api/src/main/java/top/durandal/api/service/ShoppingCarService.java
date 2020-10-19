@@ -1,17 +1,17 @@
 package top.durandal.api.service;
 
 
-import top.durandal.entity.Shoppingcar;
+import top.durandal.entity.ShoppingCar;
 
 import java.util.List;
 
 /**
- * (Shoppingcar)表服务接口
+ * (ShoppingCar)表服务接口
  *
  * @author makejava
  * @since 2020-10-06 16:50:03
  */
-public interface ShoppingcarService {
+public interface ShoppingCarService {
 
     /**
      * 通过ID查询单条数据
@@ -19,7 +19,7 @@ public interface ShoppingcarService {
      * @param shoppingcarId 主键
      * @return 实例对象
      */
-    Shoppingcar queryById(Integer shoppingcarId);
+    ShoppingCar queryById(Integer shoppingcarId);
 
     /**
      * 查询多条数据
@@ -28,15 +28,15 @@ public interface ShoppingcarService {
      * @param limit  查询条数
      * @return 对象列表
      */
-    List<Shoppingcar> queryAllByLimit(int offset, int limit);
+    List<ShoppingCar> queryAllByLimit(int offset, int limit);
 
     /**
      * 新增数据
      *
-     * @param shoppingcar 实例对象
+     * @param shoppingCar 实例对象
      * @return 实例对象
      */
-    Shoppingcar insert(Shoppingcar shoppingcar);
+    ShoppingCar insert(ShoppingCar shoppingCar);
 
     /**
      * 修改数据
@@ -44,7 +44,7 @@ public interface ShoppingcarService {
      * @param shoppingcar 实例对象
      * @return 实例对象
      */
-    Shoppingcar update(Shoppingcar shoppingcar);
+    ShoppingCar update(ShoppingCar shoppingcar);
 
     /**
      * 通过主键删除数据
@@ -54,5 +54,5 @@ public interface ShoppingcarService {
      */
     boolean deleteById(Integer shoppingcarId);
 
-    List<Shoppingcar> getAllCartByUserId(Integer userId);
+    List<ShoppingCar> getAllCartByUserId(Integer userId);
 }

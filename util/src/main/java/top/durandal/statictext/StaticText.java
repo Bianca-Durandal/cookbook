@@ -11,4 +11,6 @@ public class StaticText {
     public static final String TOKEN_KEY="VZSZOH2MMHiSrsvb+m1knDXEA4ACTTb4Wv6S1hcma5G27dU7RfADDmHwPnsUP7dLBZqiXspSK270/6wuLN6nyQDurandal==";
     public static final Integer ORDER_LENGTH=30;
     public static final String IMAGES_PATH="http://49.235.194.31/";
+    public static final String accessSecret="V5iblxMlHcIgeUxBphL5coSltrb7BPDurandal16";
+    public static final String accessKeyId="LTAI4GJgkNxHAmPDXgS3arJ3Durandal16";
 }

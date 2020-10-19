@@ -4,10 +4,9 @@ import com.alibaba.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import top.durandal.api.service.UserService;
 import top.durandal.dao.UserDao;
 import top.durandal.entity.User;
-import top.durandal.api.service.UserService;
-import top.durandal.util.ReformatDate;
 
 import java.util.Date;
 
@@ -21,7 +20,8 @@ public class UserServiceImpl implements UserService {
     PasswordEncoder passwordEncoder;
 
     public Boolean saveUser(User user) {
-        User hasUser = userDao.findByEmail(user.getUserEmail());
+        User hasUser = userDao.findByName(user.getUserName());
+        System.out.println(hasUser);
         if (hasUser == null) {
 //            String pass = passwordEncoder.encode(user.getUserPass());
             user.setUserShow("true");
@@ -90,6 +90,15 @@ public class UserServiceImpl implements UserService {
         }
         userDao.updateEmail(userId,userEmail);
         return userById;
+    }
+
+    public Boolean bindEmail(Integer userId,String userEmail) {
+        User user = userDao.getUserById(userId);
+        if (user!=null){
+            userDao.updateEmail(userId,userEmail);
+            return true;
+        }
+        return false;
     }
 
 

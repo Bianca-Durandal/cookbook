@@ -6,7 +6,6 @@ import io.jsonwebtoken.Jwts;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
@@ -33,41 +32,64 @@ public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
-        Authentication authentication = getAuthentication(request);
-        if (authentication == null) {
-            chain.doFilter(request, response);
-            return;
-        }
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        chain.doFilter(request, response);
-    }
-
-    private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest httpServletRequest) {
-        String token = httpServletRequest.getHeader(StaticText.TOKEN_HEADER);
+        String token = request.getHeader(StaticText.TOKEN_HEADER);
         if (!StringUtils.isEmpty(token) && token.startsWith(StaticText.TOKEN_PREFIX)) {
             try {
                 Jws<Claims> jws = Jwts.parserBuilder().setSigningKey(StaticText.TOKEN_KEY.getBytes()).build()
                         .parseClaimsJws(token.replace(StaticText.TOKEN_PREFIX, ""));
 
                 String userEmail = jws.getBody().getSubject();
+                System.out.println(redisTemplate.opsForValue().get(userEmail));
+                System.out.println("filterEmail:" + userEmail);
 
                 List<SimpleGrantedAuthority> role = new ArrayList<>();
                 role.add(new SimpleGrantedAuthority("ROLE_USER"));
 
                 if (!StringUtils.isEmpty(userEmail)) {
                     String getToken = (String) redisTemplate.opsForValue().get(userEmail);
+                    System.out.println("filterToken:" + getToken);
                     if (!StringUtils.isEmpty(getToken)) {
-                        return new UsernamePasswordAuthenticationToken(userEmail, null, role);
-                    }else {
-                        return null;
+                        SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(userEmail, null, role));
+                        chain.doFilter(request, response);
                     }
-                }else {
-                    return null;
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        return null;
+        chain.doFilter(request, response);
     }
+
+//    private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest httpServletRequest) {
+//        String token = httpServletRequest.getHeader(StaticText.TOKEN_HEADER);
+//        if (!StringUtils.isEmpty(token) && token.startsWith(StaticText.TOKEN_PREFIX)) {
+//            try {
+//                Jws<Claims> jws = Jwts.parserBuilder().setSigningKey(StaticText.TOKEN_KEY.getBytes()).build()
+//                        .parseClaimsJws(token.replace(StaticText.TOKEN_PREFIX, ""));
+//
+//                String userEmail = jws.getBody().getSubject();
+//                System.out.println("filterEmail:"+userEmail);
+//
+//                List<SimpleGrantedAuthority> role = new ArrayList<>();
+//                role.add(new SimpleGrantedAuthority("ROLE_USER"));
+//
+//                System.out.println(redisTemplate.opsForValue().get(userEmail));
+//
+//                if (!StringUtils.isEmpty(userEmail)) {
+//                    String getToken = (String) redisTemplate.opsForValue().get(userEmail);
+//                    System.out.println("filterToken:"+getToken);
+//                    if (!StringUtils.isEmpty(getToken)) {
+//                        return new UsernamePasswordAuthenticationToken(userEmail, null, role);
+//                    }else {
+//                        return null;
+//                    }
+//                }else {
+//                    return null;
+//                }
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        return null;
+//    }
 }

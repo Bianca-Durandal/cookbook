@@ -2,28 +2,28 @@ package top.durandal.dao;
 
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
-import top.durandal.entity.Shoppingcar;
+import top.durandal.entity.ShoppingCar;
 
 import java.util.List;
 
 /**
- * (Shoppingcar)表数据库访问层
+ * (ShoppingCar)表数据库访问层
  *
  * @author makejava
  * @since 2020-10-06 16:28:39
  */
 @Mapper
 @Repository
-public interface ShoppingcarDao {
+public interface ShoppingCarDao {
 
     /**
      * 通过ID查询单条数据
      *
-     * @param shoppingcarId 主键
+     * @param shoppingCarId 主键
      * @return 实例对象
      */
-    @Select("select * from shoppingcar where shopping_id=#{shoppingcarId}")
-    Shoppingcar queryById(Integer shoppingcarId);
+    @Select("select * from shopping_car where shoppingcar_id=#{shoppingCarId}")
+    ShoppingCar queryById(Integer shoppingCarId);
 
     /**
      * 查询指定行数据
@@ -32,7 +32,7 @@ public interface ShoppingcarDao {
      * @param limit  查询条数
      * @return 对象列表
      */
-    List<Shoppingcar> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
+    List<ShoppingCar> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
 
 
     /**
@@ -41,33 +41,33 @@ public interface ShoppingcarDao {
      * @param shoppingcar 实例对象
      * @return 对象列表
      */
-    List<Shoppingcar> queryAll(Shoppingcar shoppingcar);
+    List<ShoppingCar> queryAll(ShoppingCar shoppingcar);
 
     /**
      * 新增数据
      *
-     * @param shoppingcar 实例对象
+     * @param shoppingCar 实例对象
      * @return 影响行数
      */
-    @Insert("insert into shoppingcar (user_id,goods_id,shop_num) values(#{userId},#{goodsId},#{shopNum})")
-    @Options(useGeneratedKeys = true,keyProperty = "shoppingcarId")
-    int insert(Shoppingcar shoppingcar);
+    @Insert("insert into shopping_car (user_id,goods_id,shop_num) values(#{userId},#{goodsId},#{shopNum})")
+    @Options(useGeneratedKeys = true,keyProperty = "shoppingCarId")
+    int insert(ShoppingCar shoppingCar);
 
     /**
      * 批量新增数据（MyBatis原生foreach方法）
      *
-     * @param entities List<Shoppingcar> 实例对象列表
+     * @param entities List<ShoppingCar> 实例对象列表
      * @return 影响行数
      */
-    int insertBatch(@Param("entities") List<Shoppingcar> entities);
+    int insertBatch(@Param("entities") List<ShoppingCar> entities);
 
     /**
      * 批量新增或按主键更新数据（MyBatis原生foreach方法）
      *
-     * @param entities List<Shoppingcar> 实例对象列表
+     * @param entities List<ShoppingCar> 实例对象列表
      * @return 影响行数
      */
-    int insertOrUpdateBatch(@Param("entities") List<Shoppingcar> entities);
+    int insertOrUpdateBatch(@Param("entities") List<ShoppingCar> entities);
 
     /**
      * 修改数据
@@ -75,7 +75,7 @@ public interface ShoppingcarDao {
      * @param shoppingcar 实例对象
      * @return 影响行数
      */
-    int update(Shoppingcar shoppingcar);
+    int update(ShoppingCar shoppingcar);
 
     /**
      * 通过主键删除数据
@@ -85,10 +85,10 @@ public interface ShoppingcarDao {
      */
     int deleteById(Integer shoppingcarId);
 
-    @Select("select * from shoppingcar where user_id=#{userId}")
+    @Select("select * from shopping_car where user_id=#{userId}")
     @Results({
             @Result(property = "goods",column = "goods_id",
             one = @One(select = "top.durandal.dao.GoodsDao.queryById"))
     })
-    List<Shoppingcar> getAllCartByUserId(Integer userId);
+    List<ShoppingCar> getAllCartByUserId(Integer userId);
 }

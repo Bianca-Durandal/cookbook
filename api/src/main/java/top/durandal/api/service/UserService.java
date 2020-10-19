@@ -19,4 +19,6 @@ public interface UserService {
     User getUserById(Integer userId);
 
     User updateEmail(Integer userId, String userEmail);
+
+    Boolean bindEmail(Integer userId,String userEmail);
 }

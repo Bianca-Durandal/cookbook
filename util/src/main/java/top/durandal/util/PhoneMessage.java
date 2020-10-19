@@ -7,14 +7,12 @@ import com.aliyuncs.IAcsClient;
 import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.http.MethodType;
 import com.aliyuncs.profile.DefaultProfile;
+import top.durandal.statictext.StaticText;
 
 public final  class PhoneMessage {
     public static void getPhoneMessage(String phoneNumber,String templateParamNum){
-
-        String accessKeyId="LTAI4GJgkNxHAmPDXgS3arJ3";
-        String accessSecret="V5iblxMlHcIgeUxBphL5coSltrb7BP";
         
-        DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", accessKeyId, accessSecret);
+        DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", StaticText.accessKeyId, StaticText.accessSecret);
         IAcsClient client = new DefaultAcsClient(profile);
 
         CommonRequest request = new CommonRequest();
